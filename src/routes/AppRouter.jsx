@@ -8,7 +8,7 @@ import HomeClient from "../pages/Client/Home/Home";
 
 import HomeAdmin from "../pages/Admin/Home/Page";
 
-import Login from "../auth/Login";
+import Login from "@/Auth/Login";
 import Cookies from "js-cookie";
 import Create_User from "../pages/Admin/User/Page";
 import Page_Ambiente from "../pages/Admin/Ambiente/Page";
