@@ -42,7 +42,7 @@ const Page_Reserva = () => {
   async function getProduct() {
     try {
       const productsData = await getApi(
-        "http://localhost:8080/api/space/spaces"
+        "https://backend-reservas-fcyt.vercel.app/api/space/spaces"
       );
       setSpace(productsData.space);
       console.log(productsData);
@@ -52,7 +52,9 @@ const Page_Reserva = () => {
   }
   async function getReserva() {
     try {
-      const booksData = await getApi("http://localhost:8080/api/book/books");
+      const booksData = await getApi(
+        "https://backend-reservas-fcyt.vercel.app/api/book/books"
+      );
       setBook(booksData.book);
       console.log(booksData);
     } catch (error) {

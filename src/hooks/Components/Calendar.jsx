@@ -34,7 +34,7 @@ function Calendar({
   async function getReserva() {
     try {
       const response = await getApi(
-        `http://localhost:8080/api/book/single-book/${title}`
+        `https://backend-reservas-fcyt.vercel.app/api/book/single-book/${title}`
       );
 
       const scheduleRanges = {
@@ -174,7 +174,7 @@ function Calendar({
   };
 
   async function getUserData(userRole) {
-    const url = `http://localhost:8080/api/period/singleperiod/${userRole}`;
+    const url = `https://backend-reservas-fcyt.vercel.app/api/period/singleperiod/${userRole}`;
     try {
       const response = await getApi(url);
       console.log("Datos obtenidos para usuario:", response);

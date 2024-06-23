@@ -41,7 +41,7 @@ const Page_Ambiente = () => {
   async function getProduct() {
     try {
       const productsData = await getApi(
-        "http://localhost:8080/api/space/spaces"
+        "https://backend-reservas-fcyt.vercel.app/api/space/spaces"
       );
       setSpace(productsData.space);
       console.log(productsData);

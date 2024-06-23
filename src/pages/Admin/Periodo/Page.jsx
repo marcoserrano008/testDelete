@@ -46,7 +46,7 @@ const Page_Periodo = () => {
   async function getProduct() {
     try {
       const productsData = await getApi(
-        "http://localhost:8080/api/period/period"
+        "https://backend-reservas-fcyt.vercel.app/api/period/period"
       );
       setPeriod(productsData.period);
       console.log(productsData);

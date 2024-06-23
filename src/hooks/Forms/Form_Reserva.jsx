@@ -8,27 +8,27 @@ import {
   Select,
   MenuItem,
   Button,
-  Box
-} from "@mui/material"; 
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+  Box,
+} from "@mui/material";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { postApi, getApi } from "../../api/api";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers-pro";
 import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
 import dayjs from "dayjs";
-import 'dayjs/locale/es'; // Importar el idioma español de dayjs
+import "dayjs/locale/es"; // Importar el idioma español de dayjs
 
-dayjs.locale('es'); // Establecer el idioma español como predeterminado
+dayjs.locale("es"); // Establecer el idioma español como predeterminado
 
 // Objeto de traducción personalizado para los días de la semana
 const spanishDayLabels = {
-  sunday: 'Domingo',
-  monday: 'Lunes',
-  tuesday: 'Martes',
-  wednesday: 'Miércoles',
-  thursday: 'Jueves',
-  friday: 'Viernes',
-  saturday: 'Sábado',
+  sunday: "Domingo",
+  monday: "Lunes",
+  tuesday: "Martes",
+  wednesday: "Miércoles",
+  thursday: "Jueves",
+  friday: "Viernes",
+  saturday: "Sábado",
 };
 
 const Form_Reserva = ({ onClose, edit }) => {
@@ -39,7 +39,7 @@ const Form_Reserva = ({ onClose, edit }) => {
     wbaddress: "",
     name_teacher: "",
     date: dayjs(), // Convertir a Dayjs
-    day: dayjs().format('dddd'), // Autocompletar el día en español
+    day: dayjs().format("dddd"), // Autocompletar el día en español
     schedule: "",
   });
 
@@ -54,7 +54,9 @@ const Form_Reserva = ({ onClose, edit }) => {
   const handleChangeSpace = async (e) => {
     const selectedSpaceName = e.target.value;
     try {
-      const response = await getApi(`http://localhost:8080/api/space/singlespace/${selectedSpaceName}`);
+      const response = await getApi(
+        `https://backend-reservas-fcyt.vercel.app/api/space/singlespace/${selectedSpaceName}`
+      );
       const selectedSpace = response.space;
       setFormData({
         ...formData,
@@ -77,8 +79,10 @@ const Form_Reserva = ({ onClose, edit }) => {
 
   async function getProduct() {
     try {
-      const productsData = await getApi('http://localhost:8080/api/space/spaces');
-      setSpaceNames(productsData.space.map(space => space.name));
+      const productsData = await getApi(
+        "https://backend-reservas-fcyt.vercel.app/api/space/spaces"
+      );
+      setSpaceNames(productsData.space.map((space) => space.name));
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -86,7 +90,7 @@ const Form_Reserva = ({ onClose, edit }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       const dataToSend = {
         name: formData.name,
@@ -98,13 +102,16 @@ const Form_Reserva = ({ onClose, edit }) => {
         day: formData.day,
         schedule: formData.schedule,
       };
-  
-      const response = await postApi("http://localhost:8080/api/book/register", dataToSend);
-  
+
+      const response = await postApi(
+        "https://backend-reservas-fcyt.vercel.app/api/book/register",
+        dataToSend
+      );
+
       if (response.status === 200) {
         console.log("Datos enviados con éxito");
       }
-  
+
       onClose();
     } catch (error) {
       console.error("Error sending data to API:", error);
@@ -115,10 +122,9 @@ const Form_Reserva = ({ onClose, edit }) => {
     setFormData({
       ...formData,
       date: date,
-      day: spanishDayLabels[dayjs(date).format('dddd').toLowerCase()], // Autocompletar el día en español según la fecha seleccionada
+      day: spanishDayLabels[dayjs(date).format("dddd").toLowerCase()], // Autocompletar el día en español según la fecha seleccionada
     });
   };
-  
 
   return (
     <Box
@@ -157,7 +163,9 @@ const Form_Reserva = ({ onClose, edit }) => {
                 }}
               >
                 {spaceNames.map((name, index) => (
-                  <MenuItem key={index} value={name}>{name}</MenuItem>
+                  <MenuItem key={index} value={name}>
+                    {name}
+                  </MenuItem>
                 ))}
               </Select>
             </FormControl>
@@ -186,9 +194,9 @@ const Form_Reserva = ({ onClose, edit }) => {
           <Box>
             <LocalizationProvider dateAdapter={AdapterDayjs} locale="es">
               <DemoContainer components={["DateRangePicker"]}>
-                <DatePicker 
+                <DatePicker
                   label="Fecha de reserva"
-                  value={formData.date} 
+                  value={formData.date}
                   onChange={handleChangeDate}
                 />
               </DemoContainer>

@@ -1,8 +1,13 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { FormControl, TextField, CssBaseline,InputLabel,
-    Select,
-    MenuItem, } from "@mui/material";
+import {
+  FormControl,
+  TextField,
+  CssBaseline,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
 
 import { postApi } from "../../api/api";
 
@@ -44,7 +49,7 @@ const Form_Rango = ({ onClose, edit, getProduct }) => {
 
       // Send a POST request with JSON data
       const response = await postApi(
-        "http://localhost:8080/api/period/register",
+        "https://backend-reservas-fcyt.vercel.app/api/period/register",
         dataToSend
         //method: "POST",
       );
@@ -162,8 +167,6 @@ const Form_Rango = ({ onClose, edit, getProduct }) => {
               </Select>
             </FormControl>
           </Box>
-
-                   
         </FormControl>
 
         <Box sx={{ mt: 2 }}>

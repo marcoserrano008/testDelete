@@ -7,7 +7,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import { postApi } from "../../api/api";
-import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const RegisterModal = ({ setOpen, target, getReserva }) => {
   const [startDate, setStartDate] = useState("");
@@ -30,7 +30,7 @@ const RegisterModal = ({ setOpen, target, getReserva }) => {
   });
   const { user, isAuthenticated } = useAuth0();
   const [userProfileImage, setUserProfileImage] = useState(null);
-  
+
   useEffect(() => {
     if (isAuthenticated) {
       setUserProfileImage(user.picture);
@@ -49,9 +49,9 @@ const RegisterModal = ({ setOpen, target, getReserva }) => {
         webaddress,
       } = target;
       const date = new Date(startDate);
-      const dayOfWeekIndex = date.getDay(); 
+      const dayOfWeekIndex = date.getDay();
 
-      const adjustedDayOfWeekIndex = (dayOfWeekIndex + 8) % 7; 
+      const adjustedDayOfWeekIndex = (dayOfWeekIndex + 8) % 7;
 
       const dayOfWeekOptions = [
         "Domingo",
@@ -135,7 +135,7 @@ const RegisterModal = ({ setOpen, target, getReserva }) => {
       capacity: capacity,
       block: block,
       wbaddress: webaddress,
-      name_teacher: isAuthenticated && user.name || 'Admin',
+      name_teacher: (isAuthenticated && user.name) || "Admin",
       date: new Date(date).toISOString(),
       day: dayOfWeek,
       schedule: newBlockTime,
@@ -160,7 +160,7 @@ const RegisterModal = ({ setOpen, target, getReserva }) => {
       "18:45:00": "I",
       "20:15:00": "J",
     };
-    
+
     const startTimes = Object.keys(schedules);
     const startIndex = startTimes.indexOf(startTime);
     const endIndex = startTimes.indexOf(endTime);
@@ -169,13 +169,16 @@ const RegisterModal = ({ setOpen, target, getReserva }) => {
       const formDataCopy = { ...formData, schedule: "J" };
       try {
         const response = await postApi(
-          "http://localhost:8080/api/book/register",
+          "https://backend-reservas-fcyt.vercel.app/api/book/register",
           formDataCopy
         );
         if (response.status === 200) {
           console.log("Datos enviados con éxito para el schedule J");
         } else {
-          console.error("Error en la solicitud a la API para el schedule J:", response);
+          console.error(
+            "Error en la solicitud a la API para el schedule J:",
+            response
+          );
         }
       } catch (error) {
         console.error("Error sending data to API for schedule J:", error);
@@ -187,20 +190,28 @@ const RegisterModal = ({ setOpen, target, getReserva }) => {
 
         try {
           const response = await postApi(
-            "http://localhost:8080/api/book/register",
+            "https://backend-reservas-fcyt.vercel.app/api/book/register",
             formDataCopy
           );
           if (response.status === 200) {
-            console.log(`Datos enviados con éxito para el schedule ${schedule}`);
+            console.log(
+              `Datos enviados con éxito para el schedule ${schedule}`
+            );
           } else {
-            console.error(`Error en la solicitud a la API para el schedule ${schedule}:`, response);
+            console.error(
+              `Error en la solicitud a la API para el schedule ${schedule}:`,
+              response
+            );
           }
         } catch (error) {
-          console.error(`Error sending data to API for schedule ${schedule}:`, error);
+          console.error(
+            `Error sending data to API for schedule ${schedule}:`,
+            error
+          );
         }
       }
     }
-    
+
     getReserva();
     handleClose();
   };

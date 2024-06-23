@@ -41,7 +41,7 @@ const Form_EditarAmbiente = ({ initialValues, onClose, edit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = `http://localhost:8080/api/space/spaceupd/${formData._id}`;
+      const url = `https://backend-reservas-fcyt.vercel.app/api/space/spaceupd/${formData._id}`;
       const response = await putApi(url, formData);
       console.log("Response from server:", response); // Log the server response
       if (response.success) {

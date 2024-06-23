@@ -40,7 +40,7 @@ const Form_Periodo = ({ initialValues, onClose }) => {
     e.preventDefault();
     try {
       console.log("Form Data being sent:", formData); // Log the form data
-      const url = `http://localhost:8080/api/period/periodupd/${formData._id}`;
+      const url = `https://backend-reservas-fcyt.vercel.app/api/period/periodupd/${formData._id}`;
       const response = await putApi(url, formData);
       console.log("Response from server:", response); // Log the server response
       if (response.success) {

@@ -47,7 +47,7 @@ const Page_Alumnos = () => {
   async function getProduct() {
     try {
       const productsData = await getApi(
-        "http://localhost:8080/api/space/spaces"
+        "https://backend-reservas-fcyt.vercel.app/api/space/spaces"
       );
       setSpace(productsData.space);
       console.log(productsData);
@@ -57,7 +57,7 @@ const Page_Alumnos = () => {
   }
 
   async function getUserData(username) {
-    const url = `http://localhost:8080/api/user/singleuser/${username}`;
+    const url = `https://backend-reservas-fcyt.vercel.app/api/user/singleuser/${username}`;
 
     try {
       const response = await getApi(url);
@@ -70,7 +70,7 @@ const Page_Alumnos = () => {
   }
 
   async function getAdminData(username) {
-    const url = `http://localhost:8080/api/user/user/`;
+    const url = `https://backend-reservas-fcyt.vercel.app/api/user/user/`;
 
     try {
       const response = await getApi(url);

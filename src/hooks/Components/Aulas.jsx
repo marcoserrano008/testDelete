@@ -106,7 +106,7 @@ export default function Aulas() {
   };
 
   async function getUserData(username) {
-    const url = `http://localhost:8080/api/user/singleuser/${username}`;
+    const url = `https://backend-reservas-fcyt.vercel.app/api/user/singleuser/${username}`;
 
     try {
       const response = await getApi(url);
@@ -119,7 +119,7 @@ export default function Aulas() {
   }
 
   async function getAdminData(username) {
-    const url = `http://localhost:8080/api/user/user/`;
+    const url = `https://backend-reservas-fcyt.vercel.app/api/user/user/`;
 
     try {
       const response = await getApi(url);
@@ -146,7 +146,9 @@ export default function Aulas() {
 
   async function getSpaces() {
     try {
-      const response = await getApi("http://localhost:8080/api/space/spaces");
+      const response = await getApi(
+        "https://backend-reservas-fcyt.vercel.app/api/space/spaces"
+      );
       setSpaces(response.space);
     } catch (error) {
       console.error("Error fetching spaces:", error);
@@ -155,7 +157,9 @@ export default function Aulas() {
 
   async function getReservations(spaceId) {
     try {
-      const response = await getApi(`http://localhost:8080/api/reservation/${spaceId}`);
+      const response = await getApi(
+        `https://backend-reservas-fcyt.vercel.app/api/reservation/${spaceId}`
+      );
       // Procesa las reservas según sea necesario
     } catch (error) {
       console.error("Error fetching reservations:", error);
@@ -174,7 +178,7 @@ export default function Aulas() {
   const handleInputChange = (event) => {
     const newValue = event.target.value;
     setSearchValue(newValue);
-    filterResources(materia, newValue); 
+    filterResources(materia, newValue);
   };
 
   const handleMateriaChange = (selectedMateria) => {
@@ -182,12 +186,18 @@ export default function Aulas() {
   };
 
   const filterResources = (selectedMateria, searchText = searchValue) => {
-    const materiaInfo = namesMaterias.find((mat) => mat.name === selectedMateria);
+    const materiaInfo = namesMaterias.find(
+      (mat) => mat.name === selectedMateria
+    );
     if (materiaInfo) {
       const cantClass = materiaInfo.cantAlum;
       const filtered = resources.filter((item) => {
-        const studentsInRange = cantClass >= item.minCapacity && cantClass <= item.capacity;
-        return studentsInRange && item.title.toLowerCase().includes(searchText.toLowerCase());
+        const studentsInRange =
+          cantClass >= item.minCapacity && cantClass <= item.capacity;
+        return (
+          studentsInRange &&
+          item.title.toLowerCase().includes(searchText.toLowerCase())
+        );
       });
       setFilteredResources(filtered);
     }

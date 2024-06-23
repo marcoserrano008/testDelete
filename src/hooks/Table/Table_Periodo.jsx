@@ -28,7 +28,7 @@ export default function Table_Periodo({ period, onDelete, onUpdate }) {
 
   const handleDelete = async (index, id) => {
     console.log(id);
-    const route = `http://localhost:8080/api/period/perioddel/${id}`; // Ajusta la ruta según corresponda
+    const route = `https://backend-reservas-fcyt.vercel.app/api/period/perioddel/${id}`; // Ajusta la ruta según corresponda
     try {
       await deleteApi(route);
       setData((prevData) => prevData.filter((_, i) => i !== index));

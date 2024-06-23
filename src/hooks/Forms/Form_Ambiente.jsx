@@ -41,7 +41,7 @@ const Form_Ambiente = ({ onClose, edit, getProduct }) => {
 
       // Send a POST request with JSON data
       const response = await postAmbiente(
-        "http://localhost:8080/api/space/register",
+        "https://backend-reservas-fcyt.vercel.app/api/space/register",
         dataToSend
         //method: "POST",
       );

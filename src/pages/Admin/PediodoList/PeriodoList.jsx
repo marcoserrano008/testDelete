@@ -15,7 +15,9 @@ const Page_ReservaList = () => {
 
   async function getBooks() {
     try {
-      const booksData = await getApi("http://localhost:8080/api/book/books");
+      const booksData = await getApi(
+        "https://backend-reservas-fcyt.vercel.app/api/book/books"
+      );
       setBooks(booksData.book);
       console.log(booksData);
     } catch (error) {

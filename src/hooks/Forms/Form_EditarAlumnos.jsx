@@ -37,7 +37,7 @@ const Form_EditarAlumnos = ({ initialValues, onClose, edit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = `http://localhost:8080/api/user/dauserupd/${formData._id}`;
+      const url = `https://backend-reservas-fcyt.vercel.app/api/user/dauserupd/${formData._id}`;
       const response = await putApi(url, formData);
       console.log("Response from server:", response); // Log the server response
       if (response.success) {

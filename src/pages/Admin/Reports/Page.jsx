@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Admin } from "../../../components/layout/admin/Admin";
 import { Grid, Typography, Box } from "@mui/material";
 import { DatePickerDemo } from "./DatePickerDemo";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import jsPDF from "jspdf";
 import { addDays, format } from "date-fns";
 import Table_Periodo_List from "../../../hooks/Table/Table_Periodo_List";
@@ -27,7 +27,9 @@ const Page_Reportes = () => {
 
   const getBooks = async () => {
     try {
-      const booksData = await getApi("http://localhost:8080/api/book/books");
+      const booksData = await getApi(
+        "https://backend-reservas-fcyt.vercel.app/api/book/books"
+      );
       setBooks(booksData.book);
     } catch (error) {
       console.error("Error fetching data:", error);

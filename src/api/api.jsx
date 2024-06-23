@@ -2,9 +2,7 @@ import axios from "axios";
 
 export const getApi = async (route) => {
   try {
-    const response = await axios.get(
-      route
-    );
+    const response = await axios.get(route);
 
     return response.data;
   } catch (error) {
@@ -17,24 +15,7 @@ export const postProduct = async (route, formData) => {
   try {
     const response = await axios.post(
       `http://localhost:8000/api/v1/registerusert`,
-      formData, 
-      {
-        headers: {
-          "Content-Type": "application/json", // Set the content type to JSON
-        },
-      }
-    ); 
-    return response.data;
-  } catch (error) {
-    console.error("Error al guardar el producto:", error);
-    throw error;
-  }
-};
-export const postAmbiente = async (route, formData) => {
-  try {
-    const response = await axios.post(
-      `http://localhost:8080/api/space/register`,
-      formData, 
+      formData,
       {
         headers: {
           "Content-Type": "application/json", // Set the content type to JSON
@@ -47,7 +28,23 @@ export const postAmbiente = async (route, formData) => {
     throw error;
   }
 };
-
+export const postAmbiente = async (route, formData) => {
+  try {
+    const response = await axios.post(
+      `https://backend-reservas-fcyt.vercel.app/api/space/register`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "application/json", // Set the content type to JSON
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error al guardar el producto:", error);
+    throw error;
+  }
+};
 
 export const postApi = async (route, jsonData) => {
   console.log(jsonData);
@@ -68,16 +65,13 @@ export const postApi = async (route, jsonData) => {
     throw error;
   }
 };
-export const deleteApi = async ( route) => {
+export const deleteApi = async (route) => {
   try {
-    const response = await axios.delete(
-      route,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await axios.delete(route, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Error al eliminar el producto:", error);
@@ -86,15 +80,11 @@ export const deleteApi = async ( route) => {
 };
 export const putApi = async (route, formData) => {
   try {
-    const response = await axios.put(
-      route,
-      formData,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await axios.put(route, formData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     console.log("FormDATA: ", formData);
     return response.data;
   } catch (error) {
@@ -102,4 +92,3 @@ export const putApi = async (route, formData) => {
     throw error;
   }
 };
-

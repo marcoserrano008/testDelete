@@ -7,7 +7,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import { postApi } from "../../api/api";
-import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const RegisterModal = ({ setOpen, target, getReserva }) => {
   const [startDate, setStartDate] = useState("");
@@ -48,7 +48,7 @@ const RegisterModal = ({ setOpen, target, getReserva }) => {
         webaddress,
       } = target;
       const date = new Date(startDate);
-      const dayOfWeekIndex = date.getDay(); 
+      const dayOfWeekIndex = date.getDay();
 
       const adjustedDayOfWeekIndex = (dayOfWeekIndex + 8) % 7; //solucion BUG xd, aquí se está controlando los días :)
 
@@ -134,7 +134,7 @@ const RegisterModal = ({ setOpen, target, getReserva }) => {
       capacity: capacity,
       block: block,
       wbaddress: webaddress,
-      name_teacher: isAuthenticated && user.name || 'Admin',
+      name_teacher: (isAuthenticated && user.name) || "Admin",
       //name_teacher: user.name,
       //name_teacher: "Admin",
       date: new Date(date).toISOString(),
@@ -150,7 +150,7 @@ const RegisterModal = ({ setOpen, target, getReserva }) => {
     e.preventDefault();
     try {
       const response = await postApi(
-        "http://localhost:8080/api/book/register",
+        "https://backend-reservas-fcyt.vercel.app/api/book/register",
         formData
       );
       if (response.status === 200) {
