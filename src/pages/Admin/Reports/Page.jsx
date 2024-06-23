@@ -9,7 +9,7 @@ import Table_Periodo_List from "../../../hooks/Table/Table_Periodo_List";
 import { getApi } from "../../../api/api";
 
 const Page_Reportes = () => {
-  const name = "Reporte de ambientes y docentes - FCYT";
+  const name = "Reporte de ambientes y docentes - FCYT ";
 
   const [selectedDate, setSelectedDate] = useState({
     from: addDays(new Date(2024, 6, 8), -1),
