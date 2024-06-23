@@ -6,11 +6,12 @@ import { es } from "date-fns/locale";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/Calendar";
+//bug
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/Popover";
+} from "@/components/ui/popover";
 
 export function DatePickerDemo({ className, date, onSelect }) {
   const handleSelect = (newDate) => {
