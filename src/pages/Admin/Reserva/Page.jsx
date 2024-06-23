@@ -10,7 +10,7 @@ import Drawer from "../../../hooks/Drawer/Drawer";
 import { getApi } from "../../../api/api";
 
 import Form_Reserva from "../../../hooks/Forms/Form_Reserva";
-import Aulas from "../../../hooks/Components/aulas";
+import Aulas from "../../../hooks/Components/Aulas";
 
 const Page_Reserva = () => {
   const name = "Reserva";
