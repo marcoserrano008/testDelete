@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Admin } from "../../../components/layout/admin/Admin";
 import { Grid, Typography, Box } from "@mui/material";
 import { DatePickerDemo } from "./DatePickerDemo";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import jsPDF from "jspdf";
 import { addDays, format } from "date-fns";
 import Table_Periodo_List from "../../../hooks/Table/Table_Periodo_List";

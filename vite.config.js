@@ -21,8 +21,7 @@ export default defineConfig({
         methods: ["GET", "POST", "PUT", "DELETE"], // Especifica los métodos permitidos
       },
     },
-    port: 5525,
-  },
+    },
 
   build: {
     outDir: "dist",
