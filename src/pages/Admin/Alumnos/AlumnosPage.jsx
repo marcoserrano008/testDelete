@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Admin } from "../../../components/layout/admin/Admin";
 import { Grid, Typography } from "@mui/material";
 import { containerChartStyles } from "../Home/utils/HomeStyles";
-// import Table_Ambiente from "../../../hooks/Table/Table_Ambiente";
+// import sssTable_Ambiente from "../../../hooks/Table/Table_Ambiente";
 // import ButtonProducts from "../../../hooks/utils/Button";
 
 import Drawer from "../../../hooks/Drawer/Drawer";
