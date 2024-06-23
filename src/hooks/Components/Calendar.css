@@ -1,0 +1,15 @@
+.calendar{
+    width: 100%;
+}
+
+.calendarContainer{
+    padding-top: 0px;
+    display: flex;
+    align-items: top;
+    margin-top: -60px;
+}
+
+.calendarTitle{
+    display: flex;
+    align-items: center;
+}
